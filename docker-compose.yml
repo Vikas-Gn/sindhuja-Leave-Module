@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: leave_management
     ports:
-      - "5009:5432"
+      - "5202:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -21,7 +21,7 @@ services:
       context: ./Backend
     container_name: backend1
     ports:
-      - "3041:3041"
+      - "3202:3202"
     depends_on:
       - postgres
     networks:
@@ -32,7 +32,7 @@ services:
       context: ./Employee-leave
     container_name: employee-leave1
     ports:
-      - "8047:80"
+      - "8004:80"
     depends_on:
       - backend
     networks:
@@ -43,7 +43,7 @@ services:
       context: ./HR-leave
     container_name: hr-leave1
     ports:
-      - "8048:80"
+      - "8005:80"
     depends_on:
       - backend
     networks:
